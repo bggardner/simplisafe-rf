@@ -19,7 +19,15 @@ As pointed out by the articles mentioned above, reverse engineering the RF proto
 
 While the Raspberry Pi may not be the best selection for interfacing with the RF hardware as it does not execute in real-time, it was extremely convenient. I have issues when trying to transmit messages, as I believe interrupts my be causing errors in the bit timing.  A microcontroller or FPGA would be a better choice, but then it may need to interface with a more powerful device to do more complex tasks, like interfacing with the web, databases, or home automation systems.  Therefore, these Python modules are to serve as a guide for further development.
 
+# Requirements
+
+* Python 3
+* If using the RFUtils module (on a Raspberry Pi):
+    * The python3-pigpio Raspbian package installed
+    * pigpiod (pigpio daemon) running
+
 # Usage Examples
+
 * Base stations receive 433MHz signals and transmit 315MHz signals.
 * Keypads receive 315MHz signals and transmit 433MHz signals.
 * Sensors (including keychain remotes) only transmit 433MHz signals.
