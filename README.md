@@ -33,7 +33,7 @@ While the Raspberry Pi may not be the best selection for interfacing with the RF
 * Sensors (including keychain remotes) only transmit 433MHz signals.
 
 *NOTE: This is not meant to be a script, as each code block is an individual example*
-```
+```python
 #!/usr/bin/python3
 import RFUtils
 import SimpliSafe
@@ -83,3 +83,4 @@ bs_sn = "456JK" # Serial number of simulated base station
 response_type = SimpliSafe.BaseStationKeypadDisarmPinResponse.ResponseType.VALID # VALID or INVALID
 msg = SimpliSafe.BaseStationKeypadDisarmPinResponse(kp_sn, sequence, bs_sn, resposne_type)
 RFUtils.send(TX_315MHZ_GPIO, msg)
+```
