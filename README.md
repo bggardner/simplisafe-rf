@@ -22,9 +22,18 @@ It should be noted that the Raspberry Pi may not be the best selection for inter
 # Requirements
 
 * Python 3
-* If using the RFUtils module (on a Raspberry Pi):
-    * python3-pigpio Raspbian package installed
-    * pigpiod (pigpio daemon) running
+* RF Hardware supporting on-off keying (OOK)
+    * 315MHz Receiver (for keypad emulation and base station message logging)
+    * 315MHz Transmitter (for base station emulation)
+    * 433MHz Receiver (for base station emulation or keypad/sensor message logging)
+    * 433MHz Transmitter (for keypad/sensor emulation)
+* Digital waveform to/from bytes mechanism (options below)
+    * Raspberry Pi
+        * RFUtils module (from this repo):
+            * Requires `python3-pigpio` Raspbian package installed
+            * Requires `pigpiod` (pigpio daemon) running
+    * FPGA or Microcontroller (Arduino, etc.)
+        * Requires interface to other device for Python support (possibly via SPI, etc.)
 
 # Usage Examples
 
