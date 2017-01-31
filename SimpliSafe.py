@@ -1208,7 +1208,7 @@ class BaseStationKeypadNewPrefixResponse(BaseStationKeypadMessage, BaseStationKe
         return cls(msg.sn, msg.sequence)
 
 
-class BaseStationKeypadRemoveComponentSelectResponse(BaseStationKeypadMessage, BaseStationKeypadResponseTrait, BaseStationKeypadMenuMessageTrait):
+class BaseStationKeypadRemoveComponentSelectMenuResponse(BaseStationKeypadMessage, BaseStationKeypadResponseTrait, BaseStationKeypadMenuMessageTrait):
 
     event_type = KeypadMessage.EventType.REMOVE_COMPONENT_SELECT_MENU_REQUEST
     payload_body = bytes([0x00]) # TODO: why constant?
