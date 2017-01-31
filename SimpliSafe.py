@@ -594,7 +594,7 @@ class AbstractKeypadModifyComponentMenuRequest(KeypadMessage):
             raise ValueError
 
 # Level 5
-class KeypadRemoveComponentMenuConfirmRequest(AbstractKeypadModifyComponentMenuRequest):
+class KeypadRemoveComponentConfirmMenuRequest(AbstractKeypadModifyComponentMenuRequest):
 
     event_type = KeypadMessage.EventType.REMOVE_COMPONENT_CONFIRM_MENU_REQUEST
 
