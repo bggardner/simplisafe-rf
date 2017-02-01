@@ -25,7 +25,7 @@ It should be noted that the Raspberry Pi may not be the best selection for inter
 * RF Hardware supporting on-off keying (OOK)
     * 315MHz Receiver (for keypad emulation and base station message logging)
     * 315MHz Transmitter (for base station emulation)
-    * 433MHz Receiver (for base station emulation or keypad/sensor message logging)
+    * 433MHz Receiver (for base station emulation and keypad/sensor message logging)
     * 433MHz Transmitter (for keypad/sensor emulation)
 * Digital waveform to/from bytes mechanism (options below)
     * Raspberry Pi
