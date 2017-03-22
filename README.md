@@ -7,7 +7,7 @@ Being a [SimpliSafe](https://www.simplisafe.com) customer for many years, I have
 The aforementioned shortcomings that bothered me are as follows:
 * System arms even if entry sensors are open (alarm will trigger if they open after they are closed)
     * This is atypical of security systems, as the system should be "secure" before it is armed
-    * The keypad says if an entry sensor if open, but not which one, and is not obvious unless you look and wait for the message to scroll on the display
+    * The keypad says if an entry sensor is open, but not which one, and is not obvious unless you look and wait for the message to scroll on the display
 * No support for logging all sensor events, only of arm state changes or errors
 * No internet-based back-up communication if the cellular link is down
 * No remote notification (e-mail/text) when power is first applied (after batteries are replaced or dead)
