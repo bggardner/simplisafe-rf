@@ -86,6 +86,7 @@ class Message:
         BASE_STATION = 0x0
         KEYPAD = 0x1
         KEYCHAIN_REMOTE = 0x2
+        PANIC_BUTTON = 0x3
         MOTION_SENSOR = 0x4
         ENTRY_SENSOR = 0x5
         GLASSBREAK_SENSOR = 0x6
@@ -1779,8 +1780,27 @@ class KeychainRemoteMessage(SensorMessage):
         event_type = KeychainRemoteMessage.EventType(msg.event_type)
         return cls(msg.sn, msg.sequence, event_type)
 
+
+    class PanicButtonMessage(SensorMessage):
+
+    origin_type = Message.OriginType.PANIC_BUTTON
     
-class MotionSensorMessage(SensorMessage):
+    class EventType(SensorMessage.EventType):
+        BUTTON_PRESS = 0x01
+        
+    def __init__(self, sn: str, sequence: int, event_type: 'PanicButtonMessage.EventType'):
+        self.eventType = event_type
+        super().__init__(sn, self.origin_type, sequence, event_type)
+        
+    @classmethod
+    def factory(cls, msg: SensorMessage):
+        if msg.origin_type != cls.origin_type:
+            raise InvalidMessageBytesError
+        event_type = PanicButtonMessage.EventType(msg.event_type)
+        return cls(msg.sn, msg.sequence, event_type)
+
+    
+    class MotionSensorMessage(SensorMessage):
 
     origin_type = Message.OriginType.MOTION_SENSOR
 
@@ -1818,7 +1838,8 @@ class EntrySensorMessage(SensorMessage):
             raise InvalidMessageBytesError
         event_type = EntrySensorMessage.EventType(msg.event_type)
         return cls(msg.sn, msg.sequence, event_type)
-    
+
+
 class GlassbreakSensorMessage(SensorMessage):
     
     origin_type = Message.OriginType.GLASSBREAK_SENSOR
@@ -1826,6 +1847,7 @@ class GlassbreakSensorMessage(SensorMessage):
     class EventType(SensorMessage.EventType):
         HEARTBEAT = 0x00
         GLASSBREAK = 0x01
+        GLASSBREAK_TEST = 0x03
         
     def __init__(self, sn: str, sequence: int, event_type: 'GlassbreakSensorMessage.EventType'):
         self.event_type = GlassbreakSensorMessage.EventType(event_type)
