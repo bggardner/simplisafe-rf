@@ -1781,7 +1781,7 @@ class KeychainRemoteMessage(SensorMessage):
         return cls(msg.sn, msg.sequence, event_type)
 
 
-    class PanicButtonMessage(SensorMessage):
+class PanicButtonMessage(SensorMessage):
 
     origin_type = Message.OriginType.PANIC_BUTTON
     
@@ -1800,7 +1800,7 @@ class KeychainRemoteMessage(SensorMessage):
         return cls(msg.sn, msg.sequence, event_type)
 
     
-    class MotionSensorMessage(SensorMessage):
+class MotionSensorMessage(SensorMessage):
 
     origin_type = Message.OriginType.MOTION_SENSOR
 
