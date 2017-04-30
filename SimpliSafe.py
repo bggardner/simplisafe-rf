@@ -90,6 +90,7 @@ class Message:
         MOTION_SENSOR = 0x4
         ENTRY_SENSOR = 0x5
         GLASSBREAK_SENSOR = 0x6
+        SMOKE_DETECTOR = 0x8
 
     def __init__(self, plc: int, sn: str, payload: bytes, footer: bytes):
         if len(sn) != 5:
@@ -1858,4 +1859,24 @@ class GlassbreakSensorMessage(SensorMessage):
         if msg.origin_type != cls.origin_type:
             raise InvalidMessageBytesError
         event_type = GlassbreakSensorMessage.EventType(msg.event_type)
+        return cls(msg.sn, msg.sequence, event_type)
+
+
+class SmokeDetectorMessage(SensorMessage):
+    
+    origin_type = Message.OriginType.SMOKE_DETECTOR
+    
+    class EventType(SensorMessage.EventType):
+        HEARTBEAT = 0x00
+        SMOKE = 0x03
+        
+    def __init__(self, sn: str, sequence: int, event_type: 'SmokeDetectorMessage.EventType'):
+        self.event_type = SmokeDetectorMessage.EventType(event_type)
+        super()._init_(sn, self.origin_type, sequence, event_type)
+        
+    @classmethod
+    def factory(cls, msg: SensorMessage):
+        if msg.origin_type != cls.origin_type:
+             raise InvalidMessageBytesError
+        event_type = SmokeDetectorMessage.EventType(msg.event_type)
         return cls(msg.sn, msg.sequence, event_type)
