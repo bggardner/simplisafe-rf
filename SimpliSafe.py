@@ -1872,7 +1872,7 @@ class SmokeDetectorMessage(SensorMessage):
         
     def __init__(self, sn: str, sequence: int, event_type: 'SmokeDetectorMessage.EventType'):
         self.event_type = SmokeDetectorMessage.EventType(event_type)
-        super()._init_(sn, self.origin_type, sequence, event_type)
+        super().__init__(sn, self.origin_type, sequence, event_type)
         
     @classmethod
     def factory(cls, msg: SensorMessage):
