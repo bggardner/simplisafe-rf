@@ -1,3 +1,5 @@
+**This repository is no longer being maintained.** - I no longer have the V2 hardware, so please fork the project and continue development.  I will provide support as best I can.
+
 # simplisafe-rf
 Protocols used by SimpliSafe (v2) devices over RF, implemented in Python.
 
