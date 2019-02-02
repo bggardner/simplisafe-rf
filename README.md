@@ -15,7 +15,7 @@ The aforementioned shortcomings that bothered me are as follows:
 * No remote notification (e-mail/text) when power is first applied (after batteries are replaced or dead)
     * This is useful for knowing when power is restored after a long outage
 * Lack of ability to integrate with other home automation systems
-    * This is marginally possible through their web-based API, but requires the Interactive Motoring plan; see [here](/greencoder/simplisafe-python) and [here](/searls/simplisafe) for examples
+    * This is marginally possible through their web-based API, but requires the Interactive Monitoring plan; see [here](/greencoder/simplisafe-python) and [here](/searls/simplisafe) for examples
 
 As pointed out by the articles mentioned above, reverse engineering the RF protocol used by the SimpliSafe devices was not very difficult, but the articles failed to disclose any details.  The basics of the low-level protocol can be found in the [SimpliSafe, Inc. FCC Wireless Applications](https://fccid.io/U9K) timing diagrams.  From there, all it takes it sniffing the data and doing some some decoding.  I used a Raspberry Pi and inexpensive (<$10) 315MHz and 433MHz transmitter/receiver pairs (RF hardware).  The [pigpio library](http://abyz.co.uk/rpi/pigpio/) was used for interfacing with the RF hardware.  I wrote a crude Python module (pigpio.py) that decodes/encodes the waveforms to/from bytes using [pigpio](http://abyz.me.uk/rpi/pigpio/python.html). They key module in this repository, messages.py, is what transforms the bytes to/from human-readable messages for use in applications.  The other module, devices.py, allows the user to emulate any SimpliSafe device.
 
